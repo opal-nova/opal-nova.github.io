@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Erlang and Elixir
+      uses: erlef/setup-beam@v1
+      with:
+        otp-version: '26.2.1'
+        elixir-version: ' 1.16.0'
+
+    - name: Install dependencies
+      run: mix deps.get
+
+    - name: Run linting rules and tests
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.19.0
+
+    - name: Install npm deps
+      run: cd assets && npm install && cd ..
+
+    - name: Compile
+      run: mix compile
+
+    - name: Run build
+      run: mix site.build
+
+    - name: Upload static files
+      uses: actions/upload-artifact@v4
+      with:
+        name: static-files
+        path: output
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Download static files
+      uses: actions/download-artifact@v4
+      with:
+        name: static-files
+        path: output
+    - name: Display structure of downloaded files
+      run: ls -R output
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.PAT }}
+        publish_dir: output
+        # cname: yousite.com
