@@ -4,6 +4,8 @@ This is an application written in elixir and uses:
 * Tailwind CSS (Managed by an MIX under mix.ex in root)
 * Daisy UI (Managed by NPM under pacakge.json in assets)
 
+The point of this application is to simplify the process for people to stand up and run this repo's github actions to generate a static site that they can then host right from the repo as a github page.
+Follow github page's documentation when creating your repo to host for free on github pages. https://pages.github.com/
 
 ## Setup
  * Fork this repo and create a new repo under your own account or organization.
