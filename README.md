@@ -4,6 +4,12 @@ This is an application written in elixir and uses:
 * Tailwind CSS (Managed by an MIX under mix.ex in root)
 * Daisy UI (Managed by NPM under pacakge.json in assets)
 
+## Basic features:
+* Basic page and blog post system based on static [Markdown files](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax). 
+* [yaml](https://yaml.org/) driven navigation for main nav
+* Github actions for auto deployment. Can just edit all your content from github its self if you want.
+* Convenient styles and components via tailwind and daisyui
+
 The point of this application is to simplify the process for people to stand up and run this repo's github actions to generate a static site that they can then host right from the repo as a github page.
 Follow github page's documentation when creating your repo to host for free on github pages. https://pages.github.com/
 
