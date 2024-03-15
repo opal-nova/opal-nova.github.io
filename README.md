@@ -19,12 +19,12 @@ This is an application written in elixir and uses:
 3: From the web branch, update the content_src/site_config.yml file. ( Provide the site name and descripotion update, clean up placeholder links in navigation, etc )
 4: From the web branch, update the opal-nova.github.io/.github/workflows/deploy.yml ( update the branch from `main` to `web`
 ```
-
 on:
   push:
     branches:
       - web
 ```
+
 5: Wait for the actions to have completed which should have created a gh-pages branch. Wait till this branch has been created or repeat steps to get this to work.
 5: Set the Github page's branch to gh-pages under the repo settings
 6: You should have a github page running at this point. 🎉
