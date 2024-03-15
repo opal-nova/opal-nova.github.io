@@ -4,6 +4,10 @@ This is an application written in elixir and uses:
 * Tailwind CSS (Managed by an MIX under mix.ex in root)
 * Daisy UI (Managed by NPM under pacakge.json in assets)
 
+
+## Setup
+ * Fork this repo and create a new repo under your own account or organization.
+
 ## Setup Github pages
 
 1: Make personal access token for CI/CD  
