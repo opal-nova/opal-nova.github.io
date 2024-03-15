@@ -6,7 +6,7 @@ defmodule StaticSite do
 
   def post(assigns) do
     ~H"""
-    <.layout pages_nav={@pages_nav} wrapper_class={@wrapper_class} title={@post.title} description={@post.description}>
+    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title={@post.title} description={@post.description}>
       <h1><%= @post.title %></h1>
       <p>
         <.render_tags tags={@post.tags} />
@@ -20,7 +20,7 @@ defmodule StaticSite do
 
   def page(assigns) do
     ~H"""
-    <.layout pages_nav={@pages_nav} wrapper_class={@wrapper_class} title={@page.title} description={@page.description}>
+    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title={@page.title} description={@page.description}>
       <%= raw @page.body %>
     </.layout>
     """
@@ -29,7 +29,7 @@ defmodule StaticSite do
   @spec index(any()) :: Phoenix.LiveView.Rendered.t()
   def index(assigns) do
     ~H"""
-    <.layout pages_nav={@pages_nav} wrapper_class={@wrapper_class} title="Home Page" description="A cultural wasteland for my narcissism" >
+    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title="Home Page" description="A cultural wasteland for my narcissism" >
       <!-- Hero content -->
       <div class="relative isolate overflow-hidden h-screen">
         <img src="/assets/images/dog.webp" alt=""
@@ -68,7 +68,7 @@ defmodule StaticSite do
 
   def blog(assigns) do
     ~H"""
-    <.layout pages_nav={@pages_nav} wrapper_class={@wrapper_class} title="Blog" description="The latest rants of a idiot">
+    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title="Blog" description="The latest rants of a idiot">
 
       <!-- Blog section -->
       <div class="py-24 sm:py-42 mb-52">
@@ -97,7 +97,7 @@ defmodule StaticSite do
 
   def tag(assigns) do
     ~H"""
-    <.layout pages_nav={@pages_nav} wrapper_class={@wrapper_class} title={"#{@tag |> String.capitalize()} Tag"} description={"Posts taged as #{@tag |> String.capitalize()}"}>
+    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title={"#{@tag |> String.capitalize()} Tag"} description={"Posts taged as #{@tag |> String.capitalize()}"}>
 
       <!-- Blog section -->
       <div class="py-24 sm:py-42 mb-52">
@@ -122,7 +122,7 @@ defmodule StaticSite do
 
   def tags(assigns) do
     ~H"""
-    <.layout pages_nav={@pages_nav} wrapper_class={""} title="Tags" description="Tags">
+    <.layout site_config={@site_config} wrapper_class={""} title="Tags" description="Tags">
 
       <!-- Blog section -->
       <div class="py-24 sm:py-42 mb-52">
@@ -162,22 +162,28 @@ defmodule StaticSite do
   def build() do
     posts = StaticSite.Blog.all_posts()
     pages = StaticSite.Pages.all_pages()
-    pages_nav = StaticSite.Pages.full_nav()
+    site_config = site_config()
     tags = StaticSite.Blog.all_tags()
 
     render_file(
       "index.html",
-      index(%{posts: posts, pages: pages, pages_nav: pages_nav, wrapper_class: nil, tags: tags})
+      index(%{
+        posts: posts,
+        pages: pages,
+        site_config: site_config,
+        wrapper_class: nil,
+        tags: tags
+      })
     )
 
     render_file(
       "blog.html",
-      blog(%{posts: posts, pages: pages, pages_nav: pages_nav, wrapper_class: nil, tags: tags})
+      blog(%{posts: posts, pages: pages, site_config: site_config, wrapper_class: nil, tags: tags})
     )
 
     render_file(
       "tags.html",
-      tags(%{pages_nav: pages_nav, tags: tags})
+      tags(%{site_config: site_config, tags: tags})
     )
 
     File.mkdir_p!(Path.join([@output_dir, "tags"]))
@@ -189,7 +195,7 @@ defmodule StaticSite do
           "/tags/#{tag}.html",
           tag(%{
             posts: StaticSite.Blog.filter_posts_by_tag(tag),
-            pages_nav: pages_nav,
+            site_config: site_config,
             wrapper_class: nil,
             tag: tag,
             tags: tags
@@ -209,9 +215,10 @@ defmodule StaticSite do
         post.path,
         post(%{
           post: post,
-          pages_nav: pages_nav,
+          site_config: site_config,
           wrapper_class:
-            Map.get(post, :wrapper_class, nil) || "prose lg:prose-lg mx-auto p-10 md:px-20 md:px-0"
+            Map.get(post, :wrapper_class, nil) ||
+              "prose lg:prose-lg mx-auto p-10 md:px-20 md:px-0"
         })
       )
     end
@@ -227,9 +234,10 @@ defmodule StaticSite do
         page.path,
         page(%{
           page: page,
-          pages_nav: pages_nav,
+          site_config: site_config,
           wrapper_class:
-            Map.get(page, :wrapper_class, nil) || "prose lg:prose-lg mx-auto p-10 md:px-20 md:px-0"
+            Map.get(page, :wrapper_class, nil) ||
+              "prose lg:prose-lg mx-auto p-10 md:px-20 md:px-0"
         })
       )
     end
@@ -241,6 +249,18 @@ defmodule StaticSite do
     safe = Phoenix.HTML.Safe.to_iodata(rendered)
     output = Path.join([@output_dir, path])
     File.write!(output, safe)
+  end
+
+  def site_config do
+    path = Path.join(File.cwd!(), "content_src/site_config.yml")
+
+    case YamlElixir.read_from_file(path) do
+      {:ok, config} ->
+        config
+
+      _ ->
+        raise("failed to parse config")
+    end
   end
 
   defp render_sub_or_link(%{"url" => url, "label" => label}) do
