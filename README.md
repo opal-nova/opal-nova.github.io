@@ -25,9 +25,9 @@ on:
       - web
 ```
 
-5: Wait for the actions to have completed which should have created a gh-pages branch. Wait till this branch has been created or repeat steps to get this to work.
-5: Set the Github page's branch to gh-pages under the repo settings
-6: You should have a github page running at this point. 🎉
-
-Extra Settings:
+5: Wait for the actions to have completed which should have created a gh-pages branch. Wait till this branch has been created or repeat steps to get this to work.  
+5: Set the Github page's branch to gh-pages under the repo settings  
+6: You should have a github page running at this point. 🎉  
+  
+Extra Settings:  
 7: Update CNAME for a custom domain if needed. Open .github/workflows/deploy.yml and look for # cname: yousite.com uncomment and update as needed. If left commented make sure your site follows github's pages required repo name etc.
