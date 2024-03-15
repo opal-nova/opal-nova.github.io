@@ -47,7 +47,7 @@ defmodule StaticSite do
       <div class="py-24 sm:py-42 mb-52">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Latest Plants</h2>
+            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Latest Posts</h2>
           </div>
 
           <.render_tag_list tags={@tags} tag={nil}/>
@@ -74,7 +74,7 @@ defmodule StaticSite do
       <div class="py-24 sm:py-42 mb-52">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Latest Plants</h2>
+            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Latest Posts</h2>
           </div>
 
           <.render_tag_list tags={@tags} tag={nil} />
@@ -103,7 +103,7 @@ defmodule StaticSite do
       <div class="py-24 sm:py-42 mb-52">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Latest Plants tagged <%= @tag %></h2>
+            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Latest Posts tagged <%= @tag %></h2>
           </div>
           <.render_tag_list tags={@tags} tag={@tag} />
           <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -264,7 +264,7 @@ defmodule StaticSite do
   end
 
   defp render_sub_or_link(%{"url" => url, "label" => label}) do
-    "<li><a href='#{url}'>#{label}</a></li>"
+    "<li><a class='font-bold' href='#{url}'>#{label}</a></li>"
   end
 
   defp render_sub_or_link(%{"children" => children, "label" => label}) do
