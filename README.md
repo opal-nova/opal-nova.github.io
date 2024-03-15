@@ -20,7 +20,7 @@ This is an application written in elixir and uses:
 
 3: From the web branch, update the content_src/site_config.yml file. ( Provide the site name and descripotion update, clean up placeholder links in navigation, etc )
 
-4: From the web branch, update the opal-nova.github.io/.github/workflows/deploy.yml ( update the branch from `main` to `web`
+4: From the web branch, update the .github.io/.github/workflows/deploy.yml ( update the branch from `main` to `web`
 ```
 on:
   push:
