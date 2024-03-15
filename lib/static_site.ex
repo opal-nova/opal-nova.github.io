@@ -32,7 +32,7 @@ defmodule StaticSite do
     <.layout pages_nav={@pages_nav} wrapper_class={@wrapper_class} title="Home Page" description="A cultural wasteland for my narcissism" >
       <!-- Hero content -->
       <div class="relative isolate overflow-hidden h-screen">
-        <img src="/assets/images/hero.webp" alt=""
+        <img src="/assets/images/dog.webp" alt=""
           class="absolute inset-0 -z-10 h-full w-full object-top object-cover opacity-[.15] h-screen" />
         <div class="mx-auto max-w-3xl pt-8 pt-64">
           <div class="text-center">
