@@ -7,7 +7,7 @@
 }
 ---
 
-![Alt text](/assets/images/skull.webp)
+![Alt text](/assets/images/dog.webp)
 
 ## Just a simple page
 

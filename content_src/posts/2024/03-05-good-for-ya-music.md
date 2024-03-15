@@ -6,8 +6,6 @@
   wrapper_class: "prose lg:prose-lg mx-auto p-10 md:px-20 md:px-0"
 }
 ---
-![rat playing pinball](/assets//images/rat.webp)
-
 Week of tracks I'm listening to currently
 
 ## (((( Green Thumb ))))
