@@ -14,9 +14,12 @@ This is an application written in elixir and uses:
   * Set the expiration to no expiration (You are doing something that could cause you a security issue here, it's up to you to keep this secure and rotated. You should research what this token does and understand the risks involved in these tokens.)
   * Copy the newly generated personal access token (PAT) Don't lose this, you will need it later.
   * Repo Settings ⚙ -> Security (left side) -> Secrets and variables -> Repository secrets -> New Repository secret
-  * Create a new repo secret name it PAT and paste in the generated token from the step before. 
+  * Create a new repo secret name it PAT and paste in the generated token from the step before.
+
 2: Create a new branch and call it web
+
 3: From the web branch, update the content_src/site_config.yml file. ( Provide the site name and descripotion update, clean up placeholder links in navigation, etc )
+
 4: From the web branch, update the opal-nova.github.io/.github/workflows/deploy.yml ( update the branch from `main` to `web`
 ```
 on:
