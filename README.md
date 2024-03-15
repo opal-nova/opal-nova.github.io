@@ -20,4 +20,4 @@ This is an application written in elixir and uses:
 
 3: Update CNAME for a custom domain if needed. Open .github/workflows/deploy.yml and look for # cname: yousite.com uncomment and update as needed. If left commented make sure your site follows github's pages required repo name etc.
 
-You may need to push a commit to fire off the Github's action to start your deploy, though just setting the Github's pages branch tends to be enough. 
+You may need to push a commit to fire off the Github's action to start your deployment, though just setting the Github's pages branch tends to be enough.
