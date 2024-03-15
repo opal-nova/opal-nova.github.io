@@ -15,10 +15,19 @@ This is an application written in elixir and uses:
   * Copy the newly generated personal access token (PAT) Don't lose this, you will need it later.
   * Repo Settings ⚙ -> Security (left side) -> Secrets and variables -> Repository secrets -> New Repository secret
   * Create a new repo secret name it PAT and paste in the generated token from the step before. 
+2: Create a new branch and call it web
+3: From the web branch, update the content_src/site_config.yml file. ( Provide the site name and descripotion update, clean up placeholder links in navigation, etc )
+4: From the web branch, update the opal-nova.github.io/.github/workflows/deploy.yml ( update the branch from `main` to `web`
+```
 
-2: Set the Github page's branch to gh-pages under the repo settings
+on:
+  push:
+    branches:
+      - web
+```
+5: Wait for the actions to have completed which should have created a gh-pages branch. Wait till this branch has been created or repeat steps to get this to work.
+5: Set the Github page's branch to gh-pages under the repo settings
+6: You should have a github page running at this point. 🎉
 
-3: Update CNAME for a custom domain if needed. Open .github/workflows/deploy.yml and look for # cname: yousite.com uncomment and update as needed. If left commented make sure your site follows github's pages required repo name etc.
-
-You may need to push a commit to fire off the Github's action to start your deployment, though just setting the Github's pages branch tends to be enough.
-
+Extra Settings:
+7: Update CNAME for a custom domain if needed. Open .github/workflows/deploy.yml and look for # cname: yousite.com uncomment and update as needed. If left commented make sure your site follows github's pages required repo name etc.
