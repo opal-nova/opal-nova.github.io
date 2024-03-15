@@ -1,5 +1,5 @@
 site_information:
-  title: Super cool website name
+  title: Opal Nova
   description: "Some web page description"
   logo: http://some_path.png
 
@@ -12,6 +12,3 @@ navigation_items:
         url: /blog.html
       - label: Tags
         url: /tags.html
-
-  - label: Some Random link
-    url: http://google.com
