@@ -2,7 +2,7 @@
   title: "About",
   author: "",
   tags: ~w(),
-  description: "",
+  description: "This is an about page",
   wrapper_class: "prose lg:prose-lg mx-auto p-10 md:px-20 md:px-0"
 }
 ---

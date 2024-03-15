@@ -29,7 +29,7 @@ defmodule StaticSite do
   @spec index(any()) :: Phoenix.LiveView.Rendered.t()
   def index(assigns) do
     ~H"""
-    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title="Home Page" description="A cultural wasteland for my narcissism" >
+    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title="Home Page" description={@description} >
       <!-- Hero content -->
       <div class="relative isolate overflow-hidden h-screen">
         <img src="/assets/images/dog.webp" alt=""
@@ -68,7 +68,7 @@ defmodule StaticSite do
 
   def blog(assigns) do
     ~H"""
-    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title="Blog" description="The latest rants of a idiot">
+    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title="Blog" description={@description}>
 
       <!-- Blog section -->
       <div class="py-24 sm:py-42 mb-52">
@@ -97,7 +97,7 @@ defmodule StaticSite do
 
   def tag(assigns) do
     ~H"""
-    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title={"#{@tag |> String.capitalize()} Tag"} description={"Posts taged as #{@tag |> String.capitalize()}"}>
+    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title={"#{@tag |> String.capitalize()} Tag"} description={@description}>
 
       <!-- Blog section -->
       <div class="py-24 sm:py-42 mb-52">
@@ -122,7 +122,7 @@ defmodule StaticSite do
 
   def tags(assigns) do
     ~H"""
-    <.layout site_config={@site_config} wrapper_class={""} title="Tags" description="Tags">
+    <.layout site_config={@site_config} wrapper_class={""} title="Tags" description={@description}>
 
       <!-- Blog section -->
       <div class="py-24 sm:py-42 mb-52">
@@ -172,18 +172,19 @@ defmodule StaticSite do
         pages: pages,
         site_config: site_config,
         wrapper_class: nil,
-        tags: tags
+        tags: tags,
+        description: site_config["site_information"]["description"]
       })
     )
 
     render_file(
       "blog.html",
-      blog(%{posts: posts, pages: pages, site_config: site_config, wrapper_class: nil, tags: tags})
+      blog(%{posts: posts, pages: pages, site_config: site_config, wrapper_class: nil, tags: tags, description: "Blog posts"})
     )
 
     render_file(
       "tags.html",
-      tags(%{site_config: site_config, tags: tags})
+      tags(%{site_config: site_config, tags: tags, description: "Tags"})
     )
 
     File.mkdir_p!(Path.join([@output_dir, "tags"]))
@@ -198,7 +199,8 @@ defmodule StaticSite do
             site_config: site_config,
             wrapper_class: nil,
             tag: tag,
-            tags: tags
+            tags: tags,
+            description: "Posts tagged as #{tag |> String.capitalize()}"
           })
         )
       end
