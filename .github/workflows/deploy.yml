@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - web
 
 jobs:
   build:
@@ -63,4 +63,4 @@ jobs:
       with:
         personal_token: ${{ secrets.PAT }}
         publish_dir: output
-        # cname: yousite.com
+        cname: opalnova.com
