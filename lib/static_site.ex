@@ -75,7 +75,7 @@ defmodule StaticSite do
           site_config: site_config,
           wrapper_class:
             Map.get(post, :wrapper_class, nil) ||
-              "prose lg:prose-lg mx-auto p-10 md:px-20 md:px-0"
+              "prose lg:prose-lg mx-auto p-10 sm:px-20 md:px-0"
         })
       )
     end
@@ -94,7 +94,7 @@ defmodule StaticSite do
           site_config: site_config,
           wrapper_class:
             Map.get(page, :wrapper_class, nil) ||
-              "prose lg:prose-lg mx-auto p-10 md:px-20 md:px-0"
+              "prose lg:prose-lg mx-auto p-10 sm:px-20 md:px-0"
         })
       )
     end
