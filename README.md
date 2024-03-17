@@ -1,49 +1,49 @@
-# Invariable - A simple static site generator.
-This is an application mostly written in elixir and uses:
-* Nimble Publisher
-* Tailwind CSS (Managed by an MIX under mix.ex in root)
-* Daisy UI (Managed by NPM under pacakge.json in assets)
+# Welcome to Invariable: Your Go-To Simple Static Site Generator
 
-## Basic features:
-* Basic page and blog post system based on static [Markdown files](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax). 
-* [yaml](https://yaml.org/) driven navigation for main nav
-* Github actions for auto deployment. Can just edit all your content from github its self if you want.
-* Convenient styles and components via tailwind and daisyui
+Invariable is a straightforward, easy-to-use application designed to help you create and manage static websites. Crafted with love in Elixir, it incorporates a few select tools to ensure your website building process is as smooth and efficient as possible:
 
-The point of this application is to simplify the process for people to stand up and run this repo's github actions to generate a static site that they can then host right from the repo as a github page.
-Follow github page's documentation when creating your repo to host for free on github pages. https://pages.github.com/
+- **Nimble Publisher** for managing your content with ease,
+- **Tailwind CSS** for stylish, responsive designs, managed via a Mix task in the `mix.ex` file at the root,
+- **DaisyUI** for adding a splash of user-friendly components, managed through NPM in the `package.json` file within the assets directory.
 
-## Setup
- * Fork this repo and create a new repo under your own account or organization.
+## Core Features:
 
-## Setup Github pages
+- A simple system for pages and blog posts, utilizing static Markdown files for content creation.
+- YAML-driven navigation, making it straightforward to customize your site's main navigation menu.
+- Automatic deployment via GitHub Actions, enabling content updates directly through GitHub.
+- A collection of convenient styles and components courtesy of Tailwind CSS and DaisyUI.
 
-1: Make personal access token for CI/CD  
-  * Go to [User Settings](https://github.com/settings/profile)-> [Developer Settings](https://github.com/settings/apps) -> Personal Accesses Tokens -> [Tokens (classic)](https://github.com/settings/tokens)
-  * Click [Generate new token (classic)](https://github.com/settings/tokens/new) (<- you can just jump to this directly)
-  * Give the new token a note so that you understand what this is for.
-  * Set the expiration to no expiration (You are doing something that could cause you a security issue here, it's up to you to keep this secure and rotated. You should research what this token does and understand the risks involved in these tokens.)
-  * Copy the newly generated personal access token (PAT) Don't lose this, you will need it later.
-  * Repo Settings ⚙ -> Security (left side) -> Secrets and variables -> Repository secrets -> New Repository secret
-  * Create a new repo secret name it PAT and paste in the generated token from the step before.
+Invariable aims to simplify the website creation process, allowing you to use GitHub Actions to automatically generate a static site. This site can then be hosted directly from your GitHub repository as a GitHub Page, following the straightforward setup process detailed below.
 
-2: Create a new branch and call it web
+## Getting Started:
+**Fork this repository** to create a new repo under your account or organization.
 
-3: From the web branch, update the content_src/site_config.yml file. ( Provide the site name and descripotion update, clean up placeholder links in navigation, etc )
+## Setting Up GitHub Pages:
 
-4: From the web branch, update the .github.io/.github/workflows/deploy.yml ( update the branch from `main` to `web`
-```
-on:
-  push:
-    branches:
-      - web
-```
+1. **Generate a Personal Access Token (PAT)** for CI/CD:
+   - Navigate through: User Settings → Developer Settings → Personal Access Tokens → Tokens (classic).
+   - Click on "Generate new token (classic)," add a note for clarity, and choose 'No Expiration' for longevity. Remember, security is key, so be sure to understand and manage the risks associated with this token.
+   - Copy the newly generated PAT for later use.
 
-5: Wait for the actions to have completed which should have created a gh-pages branch. Wait till this branch has been created or repeat steps to get this to work.  
+2. **Create a Secret for Your Repository**:
+   - Go to Repo Settings → Secrets and variables → Repository secrets → New Repository secret.
+   - Name it `PAT` and paste in your generated token.
 
-5: Set the Github page's branch to gh-pages under the repo settings  
+3. **Prepare Your Content**:
+   - Create a new branch named `web`.
+   - Update the `content_src/site_config.yml` with your site's name, description, and clean up any placeholder navigation links.
 
-6: You should have a github page running at this point. 🎉  
-  
-Extra Settings:  
-7: Update CNAME for a custom domain if needed. Open .github/workflows/deploy.yml and look for # cname: yousite.com uncomment and update as needed. If left commented make sure your site follows github's pages required repo name etc.
+4. **Configure GitHub Actions**:
+   - In the `web` branch, adjust the `.github/workflows/deploy.yml` file to trigger on pushes to the `web` branch.
+
+5. **Launch Your Site**:
+   - After your changes trigger the GitHub Actions, a `gh-pages` branch will be created.
+   - Set your GitHub Pages source to the `gh-pages` branch in your repository settings.
+
+Congratulations! 🎉 Your site should now be live.
+
+### Additional Configuration:
+
+- **Custom Domain**: If you're using a custom domain, update the CNAME in `.github/workflows/deploy.yml`. Uncomment and modify the `cname` field as needed. If not using a custom domain, ensure your repository name meets GitHub Pages' requirements.
+
+Invariable is all about making web development accessible and manageable, whether you're a seasoned developer or new to the scene. Enjoy building your site!
