@@ -1,4 +1,4 @@
-# Welcome to Invariable: Your Go-To Simple Static Site Generator
+# Welcome to Invariable: A Simple to use Static Site Generator
 
 Invariable is a straightforward, easy-to-use application designed to help you create and manage static websites. Crafted with love in Elixir, it incorporates a few select tools to ensure your website building process is as smooth and efficient as possible:
 
