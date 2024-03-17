@@ -1,5 +1,5 @@
 # Invariable - A simple static site generator.
-This is an application is mostly written in elixir and uses:
+This is an application mostly written in elixir and uses:
 * Nimble Publisher
 * Tailwind CSS (Managed by an MIX under mix.ex in root)
 * Daisy UI (Managed by NPM under pacakge.json in assets)

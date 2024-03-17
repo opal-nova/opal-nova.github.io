@@ -4,158 +4,6 @@ defmodule StaticSite do
 
   embed_templates("html/*")
 
-  def post(assigns) do
-    ~H"""
-    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title={@post.title} description={@post.description}>
-      <h1><%= @post.title %></h1>
-      <p>
-        <.render_tags tags={@post.tags} />
-        <span class="block">Publish: <%= raw @post.date |> Calendar.strftime("%a, %B %d %Y") %></span>
-      </p>
-      <hr />
-      <%= raw @post.body %>
-    </.layout>
-    """
-  end
-
-  def page(assigns) do
-    ~H"""
-    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title={@page.title} description={@page.description}>
-      <%= raw @page.body %>
-    </.layout>
-    """
-  end
-
-  @spec index(any()) :: Phoenix.LiveView.Rendered.t()
-  def index(assigns) do
-    ~H"""
-    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title="Home Page" description={@description} >
-      <!-- Hero content -->
-      <div class="relative isolate overflow-hidden h-screen">
-        <img src="/assets/images/dog.webp" alt=""
-          class="absolute inset-0 -z-10 h-full w-full object-top object-cover opacity-[.15] h-screen" />
-        <div class="mx-auto max-w-3xl pt-8 pt-64">
-          <div class="text-center">
-            <h1 class="text-4xl font-black text-base-content tracking-tight sm:text-4xl">
-              A little garden
-            </h1>
-          </div>
-        </div>
-      </div>
-
-      <!-- Blog section -->
-      <div class="py-24 sm:py-42 mb-52">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Latest Posts</h2>
-          </div>
-
-          <.render_tag_list tags={@tags} tag={nil}/>
-
-          <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            <%= for post <- @posts do %>
-              <.render_post post={post} />
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <!-- temp button for drawer -->
-      <%!-- <label for="mobile-drawer" class="btn btn-primary drawer-button">Open drawer</label> --%>
-    </.layout>
-    """
-  end
-
-  def blog(assigns) do
-    ~H"""
-    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title="Blog" description={@description}>
-
-      <!-- Blog section -->
-      <div class="py-24 sm:py-42 mb-52">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Latest Posts</h2>
-          </div>
-
-          <.render_tag_list tags={@tags} tag={nil} />
-
-          <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-
-            <%= for post <- @posts do %>
-              <.render_post post={post} />
-            <% end %>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- temp button for drawer -->
-      <%!-- <label for="mobile-drawer" class="btn btn-primary drawer-button">Open drawer</label> --%>
-    </.layout>
-    """
-  end
-
-  def tag(assigns) do
-    ~H"""
-    <.layout site_config={@site_config} wrapper_class={@wrapper_class} title={"#{@tag |> String.capitalize()} Tag"} description={@description}>
-
-      <!-- Blog section -->
-      <div class="py-24 sm:py-42 mb-52">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Latest Posts tagged <%= @tag %></h2>
-          </div>
-          <.render_tag_list tags={@tags} tag={@tag} />
-          <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            <%= for post <- @posts do %>
-              <.render_post post={post} />
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <!-- temp button for drawer -->
-      <%!-- <label for="mobile-drawer" class="btn btn-primary drawer-button">Open drawer</label> --%>
-    </.layout>
-    """
-  end
-
-  def tags(assigns) do
-    ~H"""
-    <.layout site_config={@site_config} wrapper_class={""} title="Tags" description={@description}>
-
-      <!-- Blog section -->
-      <div class="py-24 sm:py-42 mb-52">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Tags:</h2>
-          </div>
-          <div class="mx-auto mt-16 max-w-2xl">
-
-            <%= for {tag, count} <- @tags do %>
-            <article class="flex flex-col items-start">
-              <div class="max-w-xl">
-                <div class="group relative">
-                  <h3 class="mt-3 text-lg font-semibold leading-6 group-hover:text-base-300">
-                    <a href={"/tags/#{tag}.html"}>
-                    <div class="badge"><%= count %></div> <%=  tag |> String.capitalize() %>
-                    </a>
-                  </h3>
-                </div>
-              </div>
-            </article>
-            <% end %>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- temp button for drawer -->
-      <%!-- <label for="mobile-drawer" class="btn btn-primary drawer-button">Open drawer</label> --%>
-    </.layout>
-    """
-  end
-
   @output_dir "./output"
   File.mkdir_p!(@output_dir)
 
@@ -179,7 +27,14 @@ defmodule StaticSite do
 
     render_file(
       "blog.html",
-      blog(%{posts: posts, pages: pages, site_config: site_config, wrapper_class: nil, tags: tags, description: "Blog posts"})
+      blog(%{
+        posts: posts,
+        pages: pages,
+        site_config: site_config,
+        wrapper_class: nil,
+        tags: tags,
+        description: "Blog posts"
+      })
     )
 
     render_file(
@@ -302,7 +157,12 @@ defmodule StaticSite do
   defp render_tags(assigns) do
     ~H"""
     <%= for tag <- @tags do %>
-      <a href={"/tags/#{tag}.html"} class="my-2 no-underline hover:bg-primary hover:text-primary-content badge badge-outline hover:badge-primary-content"><%= tag %></a>
+      <a
+        href={"/tags/#{tag}.html"}
+        class="my-2 no-underline hover:bg-primary hover:text-primary-content badge badge-outline hover:badge-primary-content"
+      >
+        <%= tag %>
+      </a>
     <% end %>
     """
   end
@@ -317,8 +177,11 @@ defmodule StaticSite do
               <%= @post.title %>
             </a>
           </h3>
-          <.render_tags tags={@post.tags}/>
-          <div><span class="text-accent">Published:</span> <time datetime={ @post.date }><%= @post.date %></time></div>
+          <.render_tags tags={@post.tags} />
+          <div>
+            <span class="text-accent">Published:</span>
+            <time datetime={@post.date}><%= @post.date %></time>
+          </div>
           <p class="mt-5 line-clamp-3 text-sm leading-6 "><%= @post.description %></p>
         </div>
       </div>
@@ -329,9 +192,12 @@ defmodule StaticSite do
   defp render_tag_list(assigns) do
     ~H"""
     <div class="flex flex-wrap my-2">
-    <%= for {tag, count} <- @tags do %>
-      <a class={["m-2 btn btn-sm", @tag == tag && "btn-primary"]} href={"/tags/#{tag}.html"}><%= tag |> String.capitalize() %><div class="badge"><%= count %></div></a>
-    <% end %>
+      <%= for {tag, count} <- @tags do %>
+        <a class={["m-2 btn btn-sm", @tag == tag && "btn-primary"]} href={"/tags/#{tag}.html"}>
+          <%= tag |> String.capitalize() %>
+          <div class="badge"><%= count %></div>
+        </a>
+      <% end %>
     </div>
     """
   end
