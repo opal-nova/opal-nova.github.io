@@ -1,7 +1,7 @@
 site_information:
-  title: Super cool website name
-  description: "Some web page description"
-  logo: http://some_path.png
+  title: Invariable
+  description: "A static site generator"
+  logo: /assets/logo.png
 
 navigation_items:
   - label: About

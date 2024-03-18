@@ -10,5 +10,4 @@
 ![Alt text](/assets/images/dog.webp)
 
 ## Just a simple page
-
-foo bar baz
+foo bar baz asdf

@@ -15,8 +15,12 @@ Invariable is a straightforward, easy-to-use application designed to help you cr
 
 Invariable aims to simplify the website creation process, allowing you to use GitHub Actions to automatically generate a static site. This site can then be hosted directly from your GitHub repository as a GitHub Page, following the straightforward setup process detailed below.
 
-## Getting Started:
-**Fork this repository** to create a new repo under your account or organization.
+## Getting Started: Runn locally
+* **Fork this repository** to create a new repo under your account or organization.
+* Copy the contents of `/example_content_src/` and put them in `/content_src` `cp -r example_content_src/* content_src`
+* Compile the content `mix site.build`
+* Server the content locally `mix run --no-halt`
+
 
 ## Setting Up GitHub Pages:
 

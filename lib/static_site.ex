@@ -2,26 +2,29 @@ defmodule StaticSite do
   use Phoenix.Component
   import Phoenix.HTML
 
-  embed_templates("html/*")
+  embed_templates("../content_src/html/*")
 
   @output_dir "./output"
   File.mkdir_p!(@output_dir)
 
   def build() do
+    site_config = site_config()
+
     posts = StaticSite.Blog.all_posts()
     pages = StaticSite.Pages.all_pages()
-    site_config = site_config()
     tags = StaticSite.Blog.all_tags()
+
+    [index_html] = StaticSite.Index.content()
 
     render_file(
       "index.html",
       index(%{
+        index_html: index_html.body,
         posts: posts,
-        pages: pages,
         site_config: site_config,
         wrapper_class: nil,
         tags: tags,
-        description: site_config["site_information"]["description"]
+        description: index_html.description
       })
     )
 
@@ -29,7 +32,6 @@ defmodule StaticSite do
       "blog.html",
       blog(%{
         posts: posts,
-        pages: pages,
         site_config: site_config,
         wrapper_class: nil,
         tags: tags,
