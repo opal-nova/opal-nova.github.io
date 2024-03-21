@@ -3,7 +3,9 @@ module.exports = {
     "./**/*.js",
     "../lib/html/*",
     "../lib/static_site.ex",
-    "../content_src/**/*.md"
+    "../content_src/**/*.md",
+    "../content_src/**/*.heex"
+
   ],
   plugins: [
     require("@tailwindcss/typography"),
