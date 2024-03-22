@@ -12,6 +12,3 @@ navigation_items:
         url: /blog.html
       - label: Tags
         url: /tags.html
-
-  - label: Some Random link
-    url: http://google.com
