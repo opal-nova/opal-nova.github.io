@@ -11,11 +11,13 @@
 </div>
 
 <div class="mx-auto max-w-3xl flex flex-col h-full items-center justify-center">
-  <h1 class="text-4xl font-black text-base-content tracking-tight sm:text-4xl">
-    Only so much time to write.
+  <h1 class="font-black text-base-content tracking-tight text-5xl mb-4">
+     💀 Only so much time to write.⏳
   </h1>
-  <p class="font-bold">What do you have to say</p>
-  <p class="text-center pt-6 font-black">
+  <p class="text-center leading-8 mt-6 p-4 rounded shadow font-black bg-primary text-primary-content ">
+    what do you have to say? 
+  </p>
+  <p class="text-center text-lg  leading-8 mt-6 font-black">
     Invariable is a static site generator built with Nimble Publisher, Tailwind, DaisyUI.<br/>
     Designed to run on github pages with little effort.
   </p>
