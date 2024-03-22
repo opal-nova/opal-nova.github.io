@@ -12,3 +12,5 @@ navigation_items:
         url: /blog.html
       - label: Tags
         url: /tags.html
+      - label: Source
+        url: https://github.com/DeadEgos/Invariable/actions
