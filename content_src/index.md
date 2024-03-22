@@ -19,7 +19,7 @@
   </p>
   <a href="https://github.com/DeadEgos/Invariable" class="btn btn-lg btn-primary text-center leading-8 mt-8 shadow font-black">
     what do you have to say? Get started
-  </p>
+  </a>
 </div>
 </div>
 
