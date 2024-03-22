@@ -7,7 +7,6 @@ window.onload = () => {
   let currentTheme = localStorage.getItem('theme');
   
   document.body.setAttribute('data-theme', currentTheme)
-  console.debug(["WTF", currentTheme])
 
   let themeEvent = (e, i) => {
     localStorage.setItem('theme', e.target.dataset.theme);
