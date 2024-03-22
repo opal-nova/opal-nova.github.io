@@ -1,0 +1,17 @@
+site_information:
+  title: Invariable
+  description: "A static site generator"
+  logo: /assets/logo.png
+
+navigation_items:
+  - label: About
+    url: /about.html
+  - label: Blog
+    children: # No URL specified here since it's just a branch node without a page associated with it
+      - label: Posts
+        url: /blog.html
+      - label: Tags
+        url: /tags.html
+
+  - label: Some Random link
+    url: http://google.com
