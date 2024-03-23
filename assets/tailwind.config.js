@@ -1,7 +1,7 @@
 module.exports = {
   content: [
     "./**/*.js",
-    "../lib/html/*",
+    "../content_src/html/*",
     "../lib/static_site.ex",
     "../content_src/**/*.md",
     "../content_src/**/*.heex"
