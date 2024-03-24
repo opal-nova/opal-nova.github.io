@@ -14,7 +14,6 @@ defmodule StaticSite do
     pages = StaticSite.Pages.all_pages()
     tags = StaticSite.Blog.all_tags()
     events = StaticSite.Events.all_events()
-
     [index_html] = StaticSite.Index.content()
 
     render_file(
@@ -105,12 +104,31 @@ defmodule StaticSite do
     render_file(
       "events.html",
       events(%{
-        posts: events,
+        events: events,
         site_config: site_config,
         wrapper_class: "mx-auto p-6 xl:w-8/12",
         description: "Events Calendar"
       })
     )
+
+    for event <- events do
+      dir = Path.dirname(event.path) |> dbg()
+
+      if dir != "." do
+        File.mkdir_p!(Path.join([@output_dir, dir]))
+      end
+
+      render_file(
+        event.path,
+        event(%{
+          event: event,
+          site_config: site_config,
+          wrapper_class:
+            Map.get(event, :wrapper_class, nil) ||
+              "prose lg:prose-lg mx-auto p-10 sm:px-20 md:px-0"
+        })
+      )
+    end
 
     :ok
   end
@@ -215,99 +233,6 @@ defmodule StaticSite do
     """
   end
 
-  # def generate_calendar_days(month, year) do
-  #   {:ok, first_day_of_month} = Date.new(year, month, 1)
-  #   last_day_of_month = Date.end_of_month(first_day_of_month)
-  #   last_day_of_month = Date.add(last_day_of_month, 1)
 
-  #   # Calculate the first day to display on the calendar
-  #   first_day_to_show = first_day_of_month
-  #   |> Date.beginning_of_week(:sunday)
 
-  #   # Calculate the last day to display on the calendar
-  #   last_day_to_show = last_day_of_month
-  #   |> Date.end_of_week(:sunday)
-
-  #   Enum.map(Date.range(first_day_to_show, last_day_to_show), fn date ->
-  #     date.day
-  #   end)
-  # end
-
-  # def generate_calendar_days(month, year) do
-  #   # Calculate the first and last day of the month
-  #   {:ok, first_day_of_month} = Date.new(year, month, 1)
-  #   last_day_of_month = Date.add(Date.end_of_month(first_day_of_month), 0)
-
-  #   # Calculate padding for the start of the month
-  #   first_day_padding = Enum.map(1..(first_day_of_month |> Date.day_of_week() |> rem(7)), fn _ -> :outside end)
-
-  #   # Days of the month
-  #   days_of_month = Enum.map(1..Calendar.ISO.days_in_month(year, month), fn day -> {:inside, day} end)
-
-  #   # Calculate padding for the end of the month
-  #   last_day_padding = Enum.map(1..(7 - rem(last_day_of_month |> Date.day_of_week(), 7)), fn _ -> :outside end)
-
-  #   # Combine all parts
-  #   Enum.concat([first_day_padding, days_of_month, last_day_padding])
-  # end
-
-  def generate_calendar_days(month, year) do
-    # Determine the first and last date of the month
-    {:ok, first_day} = Date.new(year, month, 1)
-    last_day = Date.end_of_month(first_day)
-
-    # Calculate start of the calendar view
-    start_day_of_calendar = first_day |> Date.add(-(first_day |> Date.day_of_week() |> rem(7)))
-
-    # Calculate end of the calendar view
-    end_day_of_calendar = last_day |> Date.add(6 - rem(last_day |> Date.day_of_week(), 7))
-
-    # Generate all days for the calendar view
-    days = Enum.to_list(Date.range(start_day_of_calendar, end_day_of_calendar))
-
-    # Mark each day as :inside or :outside the month
-    Enum.map(days, fn day ->
-      if Date.compare(day, first_day) in [:lt] or Date.compare(day, last_day) in [:gt] do
-        {:outside, day.day}
-      else
-        {:inside, day.day}
-      end
-    end)
-  end
-
-  def month_number_from_name(name) do
-    case name do
-      "January" -> 1
-      "February" -> 2
-      "March" -> 3
-      "April" -> 4
-      "May" -> 5
-      "June" -> 6
-      "July" -> 7
-      "August" -> 8
-      "September" -> 9
-      "October" -> 10
-      "November" -> 11
-      "December" -> 12
-      _ -> raise ArgumentError, message: "#{name} is not a valid month name"
-    end
-  end
-
-  def month_name_from_number(number) do
-    case number do
-      1 -> "January"
-      2 -> "February"
-      3 -> "March"
-      4 -> "April"
-      5 -> "May"
-      6 -> "June"
-      7 -> "July"
-      8 -> "August"
-      9 -> "September"
-      10 -> "October"
-      11 -> "November"
-      12 -> "December"
-      _ -> raise ArgumentError, message: "#{number} is not a valid month"
-    end
-  end
 end

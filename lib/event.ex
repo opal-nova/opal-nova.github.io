@@ -10,8 +10,7 @@ defmodule StaticSite.Event do
     :path,
     :body,
     :all_day,
-    :repeating,
-    :wrapper_class
+    :repeating
   ]
   defstruct [
     :id,
@@ -32,7 +31,7 @@ defmodule StaticSite.Event do
     path = Path.rootname(filename)
 
     case path |> Path.split() do
-      [_src | ["events" | split_path]] ->
+      [_src | split_path] ->
         path = Enum.join(split_path, "/") <> ".html"
         id = split_path |> List.last()
         struct!(__MODULE__, [id: id, body: body, path: path] ++ Map.to_list(attrs))

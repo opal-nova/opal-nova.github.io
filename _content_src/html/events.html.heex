@@ -7,9 +7,9 @@
   <h2 class="mx-auto text-4xl font-black w-full text-center">2024 Events</h2>
 
   <div class="relative grid gap-x-14 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-    <%= for month <- 1..12 do %>
+    <%= for {month, index} <- CalendarGenerator.generate_calendar_year(2024, @events) |> Enum.with_index() do %>
     <section class="text-center my-10">
-      <h2 class="font-semibold mb-4 text-lg"><%= month |> month_name_from_number()%></h2>
+      <h2 class="font-semibold mb-4 text-lg"><%= CalendarGenerator.month_name_from_number(index + 1) %></h2>
       <div class="grid grid-cols-7 text-xs leading-6">
         <div>S</div>
         <div>M</div>
@@ -19,48 +19,69 @@
         <div>F</div>
         <div>S</div>
       </div>
-      <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300 overflow-hidden">
-        <%= for {scope, day} <- generate_calendar_days(month, 2024) do %>
-        
-        <button :if={scope == :inside} type="button" class="relative py-1.5  hover:bg-primary  hover:text-primary-content bg-base-100 focus:z-10">
-          <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold"><%= day %></time>
-        </button>
-
-        <button disabled :if={scope == :outside} type="button" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+      <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+        <%= for {scope, day, events} <- month |> dbg() do %>
+        <div :if={scope == :outside} href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
           <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full"><%= day %></time>
-        </button>
+        </div>
 
+        <div :if={scope == :inside} class="relative py-1.5 bg-base-100 focus:z-10">
+          <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold"><%= day %></time>
+        </div>
+
+
+        <div :if={scope == :event} class=" cursor-pointer relative py-1.5 bg-base-100 focus:z-10" onclick={"date_#{index}_#{day}.showModal()"} >
+          <time tabindex="0" datetime="2022-01-12" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full bg-secondary font-semibold text-secondary-content"><%= day %></time>
+        </div>
+
+        <dialog :if={scope == :event} id={"date_#{index}_#{day}"} class="modal">
+          
+          <div class="modal-box w-11/12 max-w-5xl">
+            <section class="mt-4">
+              <h2 class="text-base font-semibold leading-6"><%= CalendarGenerator.month_name_from_number(index + 1) %>, <%= CalendarGenerator.ordinal(day) %></h2>
+              <ol class="mt-2 divide-y divide-accent text-sm leading-">
+                <%= for event <- events do %>
+                <li class="py-8 sm:flex">
+                  <p class="mt-2 flex-auto font-semibold sm:mt-0 text-center sm:text-left mb-8 sm:mb-0">
+                    <a href={event.path}><span class="font-black block text-lg"><%= event.title %></span></a>
+                    <span class="font-thin"><%= event.description %></span>
+                  </p>
+                  <div class="flex-none sm:m-6">
+                  <p class="mb-4"><span class="badge badge-success badge-outline mr-2">Starts</span> <time class="" datetime={event.start_datetime}><%= event.start_datetime |> CalendarGenerator.format_datetime_iso8601() %></time></p>
+                  <p><span class="badge badge-error badge-outline mr-2">Ends</span> <time class="" datetime={event.end_datetime}><%= event.end_datetime |> CalendarGenerator.format_datetime_iso8601() %></time></p>
+                  </div>
+                </li>
+                <% end %>
+              </ol>
+            </section>
+          </div>
+
+          <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+          </form>
+        </dialog>
         <% end %>
-        <%!--
-        <button type="button" class="relative py-1.5  hover:bg-primary bg-base-100 focus:z-10">
-          <time datetime="2022-01-12" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full bg-secondary font-semibold text-secondary-content">12</time>
-        </button> --%>
       </div>
     </section>
     <% end %>
   </div>
+
   <section class="mt-12">
-    <h2 class="text-base font-semibold leading-6">Upcoming events</h2>
+    <h2 class="text-base font-semibold leading-6">Events:</h2>
     <ol class="mt-2 divide-y divide-neutral-content text-sm leading-6">
 
-      <li class="py-4 sm:flex">
-        <time datetime="2022-01-19" class="w-28 flex-none">Thu, Jan 13</time>
-        <p class="mt-2 flex-auto sm:mt-0">View house with real estate agent</p>
-        <p class="flex-none sm:ml-6"><time datetime="2022-01-13T14:30">2:30 PM</time> - <time datetime="2022-01-13T16:30">4:30 PM</time></p>
-      </li>
-
-      <li class="py-4 sm:flex">
-        <time datetime="2022-01-19" class="w-28 flex-none">Thu, Jan 13</time>
-        <p class="mt-2 flex-auto sm:mt-0">View house with real estate agent</p>
-        <p class="flex-none sm:ml-6"><time datetime="2022-01-13T14:30">2:30 PM</time> - <time datetime="2022-01-13T16:30">4:30 PM</time></p>
-      </li>
-
-      <li class="py-4 sm:flex">
-        <time datetime="2022-01-19" class="w-28 flex-none">Thu, Jan 13</time>
-        <p class="mt-2 flex-auto sm:mt-0">View house with real estate agent</p>
-        <p class="flex-none sm:ml-6"><time datetime="2022-01-13T14:30">2:30 PM</time> - <time datetime="2022-01-13T16:30">4:30 PM</time></p>
-      </li>
-      
+      <%= for event <- @events do %>
+        <li class="py-8 sm:flex">
+          <p class="mt-2 flex-auto font-semibold sm:mt-0 text-center sm:text-left mb-8 sm:mb-0">
+            <a href={event.path}><span class="font-black block text-lg"><%= event.title %></span></a>
+            <span class="font-thin"><%= event.description %></span>
+          </p>
+          <div class="flex-none sm:m-6">
+          <p class="mb-4"><span class="badge badge-success badge-outline mr-2">Starts</span> <time class="" datetime={event.start_datetime}><%= event.start_datetime |> CalendarGenerator.format_datetime_iso8601() %></time></p>
+          <p><span class="badge badge-error badge-outline mr-2">Ends</span> <time class="" datetime={event.end_datetime}><%= event.end_datetime |> CalendarGenerator.format_datetime_iso8601() %></time></p>
+          </div>
+        </li>
+      <% end %>
     </ol>
   </section>
 </.layout>
