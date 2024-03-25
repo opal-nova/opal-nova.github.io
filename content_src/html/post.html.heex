@@ -1,0 +1,16 @@
+<.layout
+  site_config={@site_config}
+  wrapper_class={@wrapper_class}
+  title={@post.title}
+  description={@post.description}
+>
+  <h1><%= @post.title %></h1>
+  <p>
+    <.render_tags tags={@post.tags} />
+    <span class="block">
+      Publish: <%= raw(@post.date |> Calendar.strftime("%a, %B %d %Y")) %>
+    </span>
+  </p>
+  <hr />
+  <%= raw(@post.body) %>
+</.layout>
