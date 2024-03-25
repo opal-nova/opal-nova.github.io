@@ -37,6 +37,7 @@ defmodule CalendarGenerator do
       dbg(day)
       start_date = parse_iso8601_to_date(event.start_datetime) |> dbg()
       end_date = parse_iso8601_to_date(event.end_datetime) |> dbg()
+
       (Date.compare(day, start_date) in [:eq, :gt] and Date.compare(day, end_date) in [:eq, :lt])
       |> dbg()
     end)

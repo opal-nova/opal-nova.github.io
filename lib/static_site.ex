@@ -232,7 +232,4 @@ defmodule StaticSite do
     </div>
     """
   end
-
-
-
 end
