@@ -13,7 +13,7 @@ defmodule StaticSite do
     posts = StaticSite.Blog.all_posts()
     pages = StaticSite.Pages.all_pages()
     tags = StaticSite.Blog.all_tags()
-
+    events = StaticSite.Events.all_events()
     [index_html] = StaticSite.Index.content()
 
     render_file(
@@ -96,6 +96,35 @@ defmodule StaticSite do
           site_config: site_config,
           wrapper_class:
             Map.get(page, :wrapper_class, nil) ||
+              "prose lg:prose-lg mx-auto p-10 sm:px-20 md:px-0"
+        })
+      )
+    end
+
+    render_file(
+      "events.html",
+      events(%{
+        events: events,
+        site_config: site_config,
+        wrapper_class: "mx-auto p-6 xl:w-8/12",
+        description: "Events Calendar"
+      })
+    )
+
+    for event <- events do
+      dir = Path.dirname(event.path) |> dbg()
+
+      if dir != "." do
+        File.mkdir_p!(Path.join([@output_dir, dir]))
+      end
+
+      render_file(
+        event.path,
+        event(%{
+          event: event,
+          site_config: site_config,
+          wrapper_class:
+            Map.get(event, :wrapper_class, nil) ||
               "prose lg:prose-lg mx-auto p-10 sm:px-20 md:px-0"
         })
       )
@@ -203,4 +232,7 @@ defmodule StaticSite do
     </div>
     """
   end
+
+
+
 end
