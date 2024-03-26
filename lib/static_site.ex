@@ -112,7 +112,7 @@ defmodule StaticSite do
     )
 
     for event <- events do
-      dir = Path.dirname(event.path) |> dbg()
+      dir = Path.dirname(event.path)
 
       if dir != "." do
         File.mkdir_p!(Path.join([@output_dir, dir]))

@@ -29,17 +29,15 @@ defmodule CalendarGenerator do
       end_date = parse_iso8601_to_date(event.end_datetime)
       Date.compare(day, start_date) in [:eq, :gt] and Date.compare(day, end_date) in [:eq, :lt]
     end)
-    |> dbg()
   end
 
   defp has_event?(day, events) do
     Enum.any?(events, fn event ->
       dbg(day)
-      start_date = parse_iso8601_to_date(event.start_datetime) |> dbg()
-      end_date = parse_iso8601_to_date(event.end_datetime) |> dbg()
+      start_date = parse_iso8601_to_date(event.start_datetime)
+      end_date = parse_iso8601_to_date(event.end_datetime)
 
       (Date.compare(day, start_date) in [:eq, :gt] and Date.compare(day, end_date) in [:eq, :lt])
-      |> dbg()
     end)
   end
 
@@ -104,30 +102,7 @@ defmodule CalendarGenerator do
   end
 
   def format_datetime_iso8601(iso8601_string) do
-    {:ok, datetime, 0} = DateTime.from_iso8601(iso8601_string) |> dbg()
+    {:ok, datetime, 0} = DateTime.from_iso8601(iso8601_string)
     Calendar.strftime(datetime, "%A, %B %d %Y %I:%M %p")
   end
-
-  # def parse_and_format(datetime_string) do
-  #   case parse_simple_datetime(datetime_string) do
-  #     {:ok, datetime} ->
-  #       Calendar.strftime(datetime, "%a, %b %d %Y at %H:%M %Z")
-  #     :error ->
-  #       {:error, "Invalid datetime format"}
-  #   end
-  # end
-
-  # Parses a "YYYY-MM-DD HH:MM" formatted string into a DateTime struct
-  # defp parse_simple_datetime(datetime_string) do
-  #   with [date_part, time_part] <- String.split(datetime_string, " "),
-  #        [year, month, day] <- String.split(date_part, "-") |> Enum.map(&String.to_integer/1),
-  #        [hour, minute] <- String.split(time_part, ":") |> Enum.map(&String.to_integer/1),
-  #        {:ok, date} <- Date.new(year, month, day),
-  #        true <- Time.validate(hour, minute, 0) do
-  #     datetime = DateTime.new(date, Time.new!(hour, minute, 0), "Etc/UTC")
-  #     {:ok, datetime}
-  #   else
-  #     _ -> :error
-  #   end
-  # end
 end

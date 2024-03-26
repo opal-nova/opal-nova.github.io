@@ -20,7 +20,7 @@
         <div>S</div>
       </div>
       <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
-        <%= for {scope, day, events} <- month |> dbg() do %>
+        <%= for {scope, day, events} <- month do %>
         <div :if={scope == :outside} href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
           <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full"><%= day %></time>
         </div>
