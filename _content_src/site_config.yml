@@ -1,7 +1,6 @@
 site_information:
   title: Invariable
   description: "A static site generator"
-  events_year: 2024
   logo: /assets/logo.png
 
 navigation_items:

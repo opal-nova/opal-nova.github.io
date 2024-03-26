@@ -7,8 +7,8 @@
   <h1><%= @event.title %></h1>
   <p>
     <span class="block">
-      Start: <%= @event.end_datetime |> CalendarGenerator.format_datetime_iso8601() %>
-      End: <%= @event.end_datetime |> CalendarGenerator.format_datetime_iso8601() %>
+      Start: <%= @event.end_datetime |> CalendarGenerator.format_datetime_iso8601() %> End: <%= @event.end_datetime
+      |> CalendarGenerator.format_datetime_iso8601() %>
     </span>
   </p>
   <hr />

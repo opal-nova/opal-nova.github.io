@@ -33,11 +33,10 @@ defmodule CalendarGenerator do
 
   defp has_event?(day, events) do
     Enum.any?(events, fn event ->
-      dbg(day)
       start_date = parse_iso8601_to_date(event.start_datetime)
       end_date = parse_iso8601_to_date(event.end_datetime)
 
-      (Date.compare(day, start_date) in [:eq, :gt] and Date.compare(day, end_date) in [:eq, :lt])
+      Date.compare(day, start_date) in [:eq, :gt] and Date.compare(day, end_date) in [:eq, :lt]
     end)
   end
 
