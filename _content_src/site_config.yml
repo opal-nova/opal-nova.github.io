@@ -6,6 +6,8 @@ site_information:
 navigation_items:
   - label: About
     url: /about.html
+  - label: Events
+    url: /events.html
   - label: Blog
     children: # No URL specified here since it's just a branch node without a page associated with it
       - label: Posts

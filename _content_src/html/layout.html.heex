@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={@description} />
+    <title><%= @title || "Home Page" %> | <%= @site_config["site_information"]["title"] %></title>
+    <link rel="preload" type="text/css" as="style" href="/assets/app.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/app.css" />
+    <script rel="preload" type="text/javascript" src="/assets/app.js" as="script">
+    </script>
+  </head>
+
+  <script is:inline>
+    // ☝️ This script prevent the FART effect.
+    if (localStorage.getItem("theme") === null) {
+      document.documentElement.setAttribute("data-theme", "light");
+    } else
+    document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"));
+  </script>
+
+  <body class="flex flex-col min-h-screen">
+    <.header navigation_items={@site_config["navigation_items"]}, title={@site_config["site_information"]["title"]} />
+    <div class="mb-auto">
+      <div class={@wrapper_class} class="mb-auto">
+        <%= render_slot(@inner_block) %>
+      </div>
+    </div>
+    <.footer title={@site_config["site_information"]["title"]} />
+  </body>
+</html>

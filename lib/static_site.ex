@@ -2,26 +2,29 @@ defmodule StaticSite do
   use Phoenix.Component
   import Phoenix.HTML
 
-  embed_templates("html/*")
+  embed_templates("../content_src/html/*")
 
   @output_dir "./output"
   File.mkdir_p!(@output_dir)
 
   def build() do
+    site_config = site_config()
+
     posts = StaticSite.Blog.all_posts()
     pages = StaticSite.Pages.all_pages()
-    site_config = site_config()
     tags = StaticSite.Blog.all_tags()
+    events = StaticSite.Events.all_events()
+    [index_html] = StaticSite.Index.content()
 
     render_file(
       "index.html",
       index(%{
+        index_html: index_html.body,
         posts: posts,
-        pages: pages,
         site_config: site_config,
         wrapper_class: nil,
         tags: tags,
-        description: site_config["site_information"]["description"]
+        description: index_html.description
       })
     )
 
@@ -29,7 +32,6 @@ defmodule StaticSite do
       "blog.html",
       blog(%{
         posts: posts,
-        pages: pages,
         site_config: site_config,
         wrapper_class: nil,
         tags: tags,
@@ -75,7 +77,7 @@ defmodule StaticSite do
           site_config: site_config,
           wrapper_class:
             Map.get(post, :wrapper_class, nil) ||
-              "prose lg:prose-lg mx-auto p-10 md:px-20 md:px-0"
+              "prose lg:prose-lg mx-auto p-10 sm:px-20 md:px-0"
         })
       )
     end
@@ -94,7 +96,36 @@ defmodule StaticSite do
           site_config: site_config,
           wrapper_class:
             Map.get(page, :wrapper_class, nil) ||
-              "prose lg:prose-lg mx-auto p-10 md:px-20 md:px-0"
+              "prose lg:prose-lg mx-auto p-10 sm:px-20 md:px-0"
+        })
+      )
+    end
+
+    render_file(
+      "events.html",
+      events(%{
+        events: events,
+        site_config: site_config,
+        wrapper_class: "mx-auto p-6 xl:w-8/12",
+        description: "Events Calendar"
+      })
+    )
+
+    for event <- events do
+      dir = Path.dirname(event.path)
+
+      if dir != "." do
+        File.mkdir_p!(Path.join([@output_dir, dir]))
+      end
+
+      render_file(
+        event.path,
+        event(%{
+          event: event,
+          site_config: site_config,
+          wrapper_class:
+            Map.get(event, :wrapper_class, nil) ||
+              "prose lg:prose-lg mx-auto p-10 sm:px-20 md:px-0"
         })
       )
     end

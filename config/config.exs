@@ -9,6 +9,9 @@ config :esbuild,
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 
+config :plug_cowboy,
+  log_exceptions_with_status_code: [400..599]
+
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.2.4",

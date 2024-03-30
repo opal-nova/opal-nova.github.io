@@ -1,0 +1,16 @@
+<.layout
+  site_config={@site_config}
+  wrapper_class={@wrapper_class}
+  title={@event.title}
+  description={@event.description}
+>
+  <h1><%= @event.title %></h1>
+  <p>
+    <span class="block">
+      Start: <%= @event.end_datetime |> CalendarGenerator.format_datetime_iso8601() %> End: <%= @event.end_datetime
+      |> CalendarGenerator.format_datetime_iso8601() %>
+    </span>
+  </p>
+  <hr />
+  <%= raw(@event.body) %>
+</.layout>
