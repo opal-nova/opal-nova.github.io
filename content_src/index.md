@@ -2,7 +2,7 @@
   title: "Home Page",
   author: "",
   tags: ~w(),
-  description: "A personal blog / portflio for OpalNova",
+  description: "THe personal blog of OpalNova",
 }
 ---
 
@@ -11,8 +11,8 @@
 
 <div class="mx-auto max-w-3xl flex flex-col h-full items-center justify-center">
   <h1 class="text-4xl font-black text-base-content tracking-tight sm:text-4xl">
-    Foo bar baz
+    A little Garden 🌿
   </h1>
-  <p class="font-bold">asdf asdf asdf</p>
+  <p class="font-bold">for your dog 🐶</p>
 </div>
 </div>
