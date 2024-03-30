@@ -1,0 +1,5694 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Events Calendar">
+    <title>Events | Opal Nova</title>
+    <link rel="preload" type="text/css" as="style" href="/assets/app.css">
+    <link rel="stylesheet" type="text/css" href="/assets/app.css">
+    <script rel="preload" type="text/javascript" src="/assets/app.js" as="script">
+    </script>
+  </head>
+
+  <script is:inline>
+    // ☝️ This script prevent the FART effect.
+    if (localStorage.getItem("theme") === null) {
+      document.documentElement.setAttribute("data-theme", "light");
+    } else
+    document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"));
+  </script>
+
+  <body class="flex flex-col min-h-screen">
+    <div class="navbar bg-base-100 z-[100]">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" id="alb" aria-label="Open navigation menu" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+        </svg>
+      </div>
+
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+
+<li><a href='/about.html'>About</a></li>
+
+<li><a href='/events.html'>Events</a></li>
+
+<li>
+  <a>Blog</a>
+  <ul class="p-2">
+    <li><a href='/blog.html'>Posts</a></li><li><a href='/tags.html'>Tags</a></li>
+  </ul>
+</li>
+
+
+      </ul>
+    </div>
+    <a href="/" class="-m-1.5 p-1.5">
+      <span class="sr-only"></span>
+      <img class="w-20 rounded-full mr-2 inline" src="/assets/images/logo.png" alt="">
+      <span class="hidden lg:inline">
+Opal Nova
+      </span>
+    </a>
+  </div>
+
+  <div class="navbar-center flex lg:hidden text-center">
+Opal Nova
+  </div>
+
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1 z-10">
+
+<li><a class='font-bold' href='/about.html'>About</a></li>
+
+<li><a class='font-bold' href='/events.html'>Events</a></li>
+
+<li class="dropdown dropdown-hover mt-[2px]">
+  <div tabindex="0" role="button" class="btn btn-ghost rounded-btn btn-sm">Blog</div>
+  <ul tabindex="0" class="dropdown-content bg-base-100 p-3 pt-4">
+    <li><a class='font-bold' href='/blog.html'>Posts</a></li><li><a class='font-bold' href='/tags.html'>Tags</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+  </div>
+
+  <div class="navbar-end">
+    <details id="theme-change" class="dropdown details-reset details-overlay details-overlay-dark z-10 mr-4">
+      <summary class="btn btn-sm sm:btn-md btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"></path>
+        </svg>
+        <span class="hidden sm:inline">Theme</span>
+      </summary>
+      <ul tabindex="0" class="dropdown-menu absolute right-0 w-56 p-2 mt-2 text-gray-800 dark:text-white animate-slide-in-down rounded-lg shadow-md">
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="light">
+            🌞️ Light Mode
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="dark" data-key="front-page">
+            🔥 Dark Mode
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="cupcake">
+            🍰 Cupcake
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="bumblebee">
+            🐝 Bumblebee
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="emerald">
+            ✨ Emerald
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="corporate">
+            🏢 Corporate
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="synthwave">
+            🎸 Synthwave
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="retro">
+            👴 Retro
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="cyberpunk">
+            🤖 Cyberpunk
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="valentine">
+            💕 Valentine
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="halloween">
+            🎃 Halloween
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="garden">
+            🌻 Garden
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="forest">
+            🌲 Forest
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="aqua">
+            🐳 Aqua
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="lofi">
+            📺 LoFi
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="pastel">
+            🧁 Pastel
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="fantasy">
+            🧚‍♀️ Fantasy
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="wireframe">
+            📈 Wireframe
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="black">
+            🏠 Black
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="luxury">
+            💼 Luxury
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="dracula">
+            🧛‍♂️ Dracula
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="autumn">
+            🍁 Autumn
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="business">
+            🏢 Business
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="acid">
+            ⚗️ Acid
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="lemonade">
+            🍋 Lemonade
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="night">
+            🌜 Night
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="coffee">
+            ☕ Coffee
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="winter">
+            ❄️ Winter
+          </a>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="dim">
+            🔅 Dim
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="nord">
+            Nord
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="sunset">
+            ☀️ Sunset
+          </a>
+        </li>
+      </ul>
+    </details>
+  </div>
+</div>
+    <div class="mb-auto">
+      <div class="mx-auto p-6 xl:w-8/12" class="mb-auto">
+
+  <h2 class="mx-auto text-4xl font-black w-full text-center">2024 Events</h2>
+
+  <div class="relative grid gap-x-14 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+January
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+        </div>
+      </section>
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+February
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+        </div>
+      </section>
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+March
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+        </div>
+      </section>
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+April
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+        </div>
+      </section>
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+May
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+        </div>
+      </section>
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+June
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+        </div>
+      </section>
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+July
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+        </div>
+      </section>
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+August
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+        </div>
+      </section>
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+September
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+        </div>
+      </section>
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+October
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+        </div>
+      </section>
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+November
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+        </div>
+      </section>
+
+      <section class="text-center my-10">
+        <h2 class="font-semibold mb-4 text-lg">
+December
+        </h2>
+        <div class="grid grid-cols-7 text-xs leading-6">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg  bg-base-300 text-sm shadow ring-1 ring-base-300">
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+5
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+6
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+7
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+8
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+9
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+10
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+11
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+12
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+13
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+14
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+15
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+16
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+17
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+18
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+19
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+20
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+21
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+22
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+23
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+24
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+25
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+26
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+27
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+28
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+29
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+30
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div class="relative py-1.5 bg-base-100 focus:z-10">
+              <time datetime="2022-01-01" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full font-bold">
+31
+              </time>
+            </div>
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+1
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+2
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+3
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+            <div href="#" class="relative bg-base-300 text-base-content py-1.5 focus:z-10 opacity-50 font-thin">
+              <time datetime="2021-12-27" class="mx-auto flex h-7 w-7 items-center justify-center rounded-full">
+4
+              </time>
+            </div>
+
+            
+
+            
+
+            
+
+        </div>
+      </section>
+
+  </div>
+
+  <section class="mt-12">
+    <h2 class="text-base font-semibold leading-6">Events:</h2>
+    <ol class="mt-2 divide-y divide-neutral-content text-sm leading-6">
+
+    </ol>
+  </section>
+
+      </div>
+    </div>
+    <footer class="footer footer-center p-10 bg-base-200 text-base-content">
+  <aside>
+    <p>Opal Nova © 2024</p>
+  </aside>
+</footer>
+  </body>
+</html>

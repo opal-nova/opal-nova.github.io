@@ -21,19 +21,20 @@
   </script>
 
   <body class="flex flex-col min-h-screen">
-    <!-- Main Nav -->
-    <div class="navbar bg-base-100 z-100">
-      <div class="navbar-start">
-        <div class="dropdown">
-          <div tabindex="0" role="button" id="alb" aria-label="Open navigation menu" class="btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
-            </svg>
-          </div>
+    <div class="navbar bg-base-100 z-[100]">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" id="alb" aria-label="Open navigation menu" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+        </svg>
+      </div>
 
-          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
 <li><a href='/about.html'>About</a></li>
+
+<li><a href='/events.html'>Events</a></li>
 
 <li>
   <a>Blog</a>
@@ -43,25 +44,27 @@
 </li>
 
 
-          </ul>
-        </div>
-        <a href="/" class="-m-1.5 p-1.5">
-          <span class="sr-only"></span>
-          <img class="w-20 rounded-full mr-2 inline" src="/assets/images/dog.webp" alt="">
-          <span class="hidden lg:inline">
+      </ul>
+    </div>
+    <a href="/" class="-m-1.5 p-1.5">
+      <span class="sr-only"></span>
+      <img class="w-20 rounded-full mr-2 inline" src="/assets/images/logo.png" alt="">
+      <span class="hidden lg:inline">
 Opal Nova
-          </span>
-        </a>
-      </div>
+      </span>
+    </a>
+  </div>
 
-      <div class="navbar-center flex lg:hidden text-center">
+  <div class="navbar-center flex lg:hidden text-center">
 Opal Nova
-      </div>
+  </div>
 
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1 z-10">
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1 z-10">
 
 <li><a class='font-bold' href='/about.html'>About</a></li>
+
+<li><a class='font-bold' href='/events.html'>Events</a></li>
 
 <li class="dropdown dropdown-hover mt-[2px]">
   <div tabindex="0" role="button" class="btn btn-ghost rounded-btn btn-sm">Blog</div>
@@ -71,130 +74,177 @@ Opal Nova
 </li>
 
 
-        </ul>
-      </div>
+    </ul>
+  </div>
 
-      <div class="navbar-end">
-        <details id="theme-change" class="dropdown details-reset details-overlay details-overlay-dark z-10 mr-4">
-          <summary class="btn btn-sm sm:btn-md btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"></path>
-            </svg>
-            <span class="hidden sm:inline">Theme</span>
-          </summary>
-          <ul tabindex="0" class="dropdown-menu absolute right-0 w-56 p-2 mt-2 text-gray-800 dark:text-white animate-slide-in-down rounded-lg shadow-md">
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="light">
-                🌞️ Light Mode
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="dark" data-key="front-page">
-                🔥 Dark Mode
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="cupcake">
-                🍰 Cupcake
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="bumblebee">
-                🐝 Bumblebee
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="emerald">
-                ✨ Emerald
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="corporate">
-                🏢 Corporate
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="synthwave">
-                🎸 Synthwave
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="retro">
-                👴 Retro
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="cyberpunk">
-                🤖 Cyberpunk
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="valentine">
-                💕 Valentine
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="halloween">
-                🎃 Halloween
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="garden">
-                🌻 Garden
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="forest">
-                🌲 Forest
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="aqua">
-                🐳 Aqua
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="lofi">
-                📺 LoFi
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="pastel">
-                🧁 Pastel
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="fantasy">
-                🧚‍♀️ Fantasy
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="wireframe">
-                📈 Wireframe
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="black">
-                🏠 Black
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="luxury">
-                💼 Luxury
-              </a>
-            </li>
-            <li>
-              <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="dracula">
-                🧛‍♂️ Dracula
-              </a>
-            </li>
-          </ul>
-        </details>
-      </div>
-    </div>
-
+  <div class="navbar-end">
+    <details id="theme-change" class="dropdown details-reset details-overlay details-overlay-dark z-10 mr-4">
+      <summary class="btn btn-sm sm:btn-md btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"></path>
+        </svg>
+        <span class="hidden sm:inline">Theme</span>
+      </summary>
+      <ul tabindex="0" class="dropdown-menu absolute right-0 w-56 p-2 mt-2 text-gray-800 dark:text-white animate-slide-in-down rounded-lg shadow-md">
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="light">
+            🌞️ Light Mode
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="dark" data-key="front-page">
+            🔥 Dark Mode
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="cupcake">
+            🍰 Cupcake
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="bumblebee">
+            🐝 Bumblebee
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="emerald">
+            ✨ Emerald
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="corporate">
+            🏢 Corporate
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="synthwave">
+            🎸 Synthwave
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="retro">
+            👴 Retro
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="cyberpunk">
+            🤖 Cyberpunk
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="valentine">
+            💕 Valentine
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="halloween">
+            🎃 Halloween
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="garden">
+            🌻 Garden
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="forest">
+            🌲 Forest
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="aqua">
+            🐳 Aqua
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="lofi">
+            📺 LoFi
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="pastel">
+            🧁 Pastel
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="fantasy">
+            🧚‍♀️ Fantasy
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="wireframe">
+            📈 Wireframe
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="black">
+            🏠 Black
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="luxury">
+            💼 Luxury
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="dracula">
+            🧛‍♂️ Dracula
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="autumn">
+            🍁 Autumn
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="business">
+            🏢 Business
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="acid">
+            ⚗️ Acid
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="lemonade">
+            🍋 Lemonade
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="night">
+            🌜 Night
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="coffee">
+            ☕ Coffee
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="winter">
+            ❄️ Winter
+          </a>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="dim">
+            🔅 Dim
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="nord">
+            Nord
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-change__option flex items-center gap-2 hover:bg-gray-200 py-2 px-3  whitespace-nowrap" data-theme="sunset">
+            ☀️ Sunset
+          </a>
+        </li>
+      </ul>
+    </details>
+  </div>
+</div>
     <div class="mb-auto">
-      <div class="prose lg:prose-lg mx-auto p-10 md:px-20 md:px-0" class="mb-auto">
+      <div class="prose lg:prose-lg mx-auto p-10 sm:px-20 md:px-0" class="mb-auto">
 
 <p>
   <img src="/assets/images/dog.webp" alt="Alt text">
@@ -202,15 +252,15 @@ Opal Nova
 <h2>
 Just a simple page</h2>
 <p>
-foo bar baz</p>
+foo bar baz asdf</p>
 
 
       </div>
     </div>
     <footer class="footer footer-center p-10 bg-base-200 text-base-content">
-      <aside>
-        <p>Opal Nova © 2024</p>
-      </aside>
-    </footer>
+  <aside>
+    <p>Opal Nova © 2024</p>
+  </aside>
+</footer>
   </body>
 </html>
